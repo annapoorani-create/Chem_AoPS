@@ -1,139 +1,900 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chemistry AoPS - Shell</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & base styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f4f7f9;
-      color: #333;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header / Navigation */
-    header {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      font-size: 24px;
-      font-weight: 700;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav ul li {
-      font-weight: 500;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    nav ul li:hover {
-      color: #facc15; /* yellow accent on hover */
-      cursor: pointer;
-    }
-
-    /* Main content area */
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    section {
-      background: white;
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    section h2 {
-      margin-bottom: 20px;
-      color: #1e3a8a;
-    }
-    section p {
-      color: #555;
-      line-height: 1.6;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      color: #777;
-      font-size: 14px;
-    }
-
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Chemistry AoPS</h1>
-    <nav>
-      <ul>
-        <li>Forum</li>
-        <li>Wiki</li>
-        <li>Practice Problems</li>
-        <li>Past Tests</li>
-        <li>Practice Tests</li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section>
-      <h2>Forum</h2>
-      <p>This is where users will discuss chemistry topics, ask questions, and share solutions.</p>
-    </section>
-
-    <section>
-      <h2>Wiki</h2>
-      <p>A structured knowledge base for chemistry concepts, reactions, and problem-solving strategies.</p>
-    </section>
-
-    <section>
-      <h2>Practice Problems</h2>
-      <p>Collection of graded problems for students to test their understanding and prepare for exams.</p>
-    </section>
-
-    <section>
-      <h2>Past Tests</h2>
-      <p>Archive of previous chemistry exams for reference and practice.</p>
-    </section>
-
-    <section>
-      <h2>Practice Tests</h2>
-      <p>Interactive or downloadable tests for students to simulate exam conditions.</p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Chemistry AoPS • All rights reserved
-  </footer>
-
-</body>
-</html>
+diff --git a/main_thing.html b/main_thing.html
+index fa1ab3b8a0d04cb335a78b800d48bcfb7070d9e8..62f2079eb1cc1baf1b8407bfbc4121424a45035d 100644
+--- a/main_thing.html
++++ b/main_thing.html
+@@ -1,139 +1,815 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>Chemistry AoPS - Shell</title>
+-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
++  <title>Chemistry AoPS</title>
++  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+   <style>
+-    /* Reset & base styles */
++    :root {
++      color-scheme: light;
++      --brand-blue: #1e3a8a;
++      --brand-yellow: #facc15;
++      --bg: #f5f7fb;
++      --card-bg: #ffffff;
++      --text: #1f2937;
++      --muted: #4b5563;
++      --border: #e5e7eb;
++    }
++
+     * {
++      box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+-      box-sizing: border-box;
+     }
++
+     body {
++      background: var(--bg);
++      color: var(--text);
+       font-family: 'Roboto', sans-serif;
+-      background: #f4f7f9;
+-      color: #333;
++      line-height: 1.6;
++      min-height: 100vh;
+     }
++
+     a {
+-      text-decoration: none;
+       color: inherit;
++      text-decoration: none;
+     }
+ 
+-    /* Header / Navigation */
+     header {
+-      background-color: #1e3a8a;
+-      color: white;
+-      padding: 20px 40px;
+-      display: flex;
++      background: var(--card-bg);
++      border-bottom: 1px solid var(--border);
++      box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
++      padding: 20px 32px;
++      position: sticky;
++      top: 0;
++      z-index: 1000;
++    }
++
++    .nav-wrapper {
+       align-items: center;
++      display: flex;
++      flex-wrap: wrap;
++      gap: 16px;
+       justify-content: space-between;
+-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
++      margin: 0 auto;
++      max-width: 1200px;
+     }
+-    header h1 {
+-      font-size: 24px;
++
++    .brand {
++      align-items: center;
++      display: flex;
++      gap: 12px;
++    }
++
++    .logo {
++      background: linear-gradient(135deg, var(--brand-blue), #3b82f6);
++      border-radius: 12px;
++      color: white;
++      font-size: 22px;
+       font-weight: 700;
++      padding: 12px 16px;
+     }
++
+     nav ul {
+-      list-style: none;
+       display: flex;
+-      gap: 30px;
++      flex-wrap: wrap;
++      gap: 20px;
++      list-style: none;
+     }
+-    nav ul li {
+-      font-weight: 500;
++
++    nav button {
++      background: none;
++      border: none;
++      color: var(--muted);
++      cursor: pointer;
+       font-size: 16px;
+-      transition: 0.3s;
++      font-weight: 500;
++      padding: 8px 12px;
++      position: relative;
++      transition: color 0.2s ease, transform 0.2s ease;
+     }
+-    nav ul li:hover {
+-      color: #facc15; /* yellow accent on hover */
+-      cursor: pointer;
++
++    nav button.active,
++    nav button:hover {
++      color: var(--brand-blue);
++      transform: translateY(-2px);
++    }
++
++    nav button.active::after {
++      background: var(--brand-blue);
++      border-radius: 999px;
++      bottom: -6px;
++      content: '';
++      height: 3px;
++      left: 50%;
++      position: absolute;
++      transform: translateX(-50%);
++      width: 60%;
+     }
+ 
+-    /* Main content area */
+     main {
++      margin: 32px auto 64px;
+       max-width: 1200px;
+-      margin: 40px auto;
+       padding: 0 20px;
++      width: 100%;
++    }
++
++    .grid {
++      display: grid;
++      gap: 24px;
+     }
++
+     section {
+-      background: white;
+-      border-radius: 12px;
+-      padding: 40px;
+-      margin-bottom: 30px;
+-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+-      transition: transform 0.3s, box-shadow 0.3s;
++      background: var(--card-bg);
++      border: 1px solid var(--border);
++      border-radius: 16px;
++      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
++      overflow: hidden;
+     }
+-    section:hover {
+-      transform: translateY(-5px);
+-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
++
++    section header {
++      background: linear-gradient(120deg, rgba(30, 58, 138, 0.1), rgba(59, 130, 246, 0.1));
++      border-bottom: 1px solid var(--border);
++      padding: 20px 28px;
++      position: static;
+     }
+-    section h2 {
++
++    section header h2 {
++      color: var(--brand-blue);
++      font-size: 24px;
++      font-weight: 700;
++      margin-bottom: 4px;
++    }
++
++    section header p {
++      color: var(--muted);
++      font-size: 15px;
++    }
++
++    section .content {
++      padding: 28px;
++    }
++
++    .stack {
++      align-items: stretch;
++      display: grid;
++      gap: 20px;
++    }
++
++    .card {
++      background: var(--card-bg);
++      border: 1px solid var(--border);
++      border-radius: 14px;
++      display: grid;
++      gap: 10px;
++      padding: 20px;
++      transition: transform 0.2s ease, box-shadow 0.2s ease;
++    }
++
++    .card:hover {
++      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
++      transform: translateY(-2px);
++    }
++
++    .card h3 {
++      color: var(--brand-blue);
++      font-size: 18px;
++      font-weight: 600;
++    }
++
++    .muted {
++      color: var(--muted);
++      font-size: 15px;
++    }
++
++    form {
++      display: grid;
++      gap: 16px;
++    }
++
++    label {
++      color: var(--brand-blue);
++      font-size: 15px;
++      font-weight: 500;
++    }
++
++    input[type="text"],
++    textarea,
++    select {
++      border: 1px solid var(--border);
++      border-radius: 10px;
++      font: inherit;
++      padding: 10px 14px;
++      transition: border 0.2s ease, box-shadow 0.2s ease;
++      width: 100%;
++    }
++
++    textarea {
++      min-height: 120px;
++      resize: vertical;
++    }
++
++    input[type="text"]:focus,
++    textarea:focus,
++    select:focus {
++      border-color: var(--brand-blue);
++      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
++      outline: none;
++    }
++
++    button.primary {
++      align-self: start;
++      background: linear-gradient(135deg, var(--brand-blue), #2563eb);
++      border: none;
++      border-radius: 999px;
++      color: white;
++      cursor: pointer;
++      font-size: 15px;
++      font-weight: 600;
++      padding: 12px 28px;
++      transition: transform 0.2s ease, box-shadow 0.2s ease;
++    }
++
++    button.primary:hover {
++      box-shadow: 0 15px 30px rgba(30, 58, 138, 0.25);
++      transform: translateY(-1px);
++    }
++
++    .forum-filters {
++      display: flex;
++      flex-wrap: wrap;
++      gap: 12px;
+       margin-bottom: 20px;
+-      color: #1e3a8a;
+     }
+-    section p {
+-      color: #555;
+-      line-height: 1.6;
++
++    .badge {
++      background: rgba(30, 58, 138, 0.1);
++      border-radius: 999px;
++      color: var(--brand-blue);
++      display: inline-flex;
++      font-size: 13px;
++      font-weight: 600;
++      gap: 6px;
++      padding: 6px 12px;
++      text-transform: uppercase;
+     }
+ 
+-    /* Footer */
+-    footer {
+-      text-align: center;
++    .thread-list,
++    .wiki-list {
++      display: grid;
++      gap: 16px;
++    }
++
++    .thread {
++      border: 1px solid var(--border);
++      border-radius: 12px;
++      padding: 18px;
++    }
++
++    .thread header,
++    .wiki-entry header {
++      align-items: baseline;
++      display: flex;
++      flex-wrap: wrap;
++      gap: 10px;
++      justify-content: space-between;
++    }
++
++    .thread h3,
++    .wiki-entry h3 {
++      font-size: 19px;
++      font-weight: 600;
++    }
++
++    .forum-replies {
++      border-left: 3px solid rgba(30, 58, 138, 0.15);
++      display: grid;
++      gap: 12px;
++      margin-top: 14px;
++      padding-left: 16px;
++    }
++
++    .reply {
++      background: rgba(30, 58, 138, 0.06);
++      border-radius: 10px;
++      padding: 12px 14px;
++    }
++
++    .wiki-entry {
++      border: 1px solid var(--border);
++      border-radius: 12px;
+       padding: 20px;
+-      margin-top: 40px;
+-      color: #777;
++    }
++
++    .wiki-entry p {
++      margin-top: 10px;
++      white-space: pre-line;
++    }
++
++    .empty-state {
++      align-items: center;
++      color: var(--muted);
++      display: grid;
++      font-size: 15px;
++      gap: 8px;
++      justify-items: center;
++      padding: 40px 20px;
++      text-align: center;
++    }
++
++    .pill {
++      background: rgba(250, 204, 21, 0.2);
++      border-radius: 999px;
++      color: #92400e;
++      display: inline-flex;
++      font-size: 13px;
++      font-weight: 600;
++      padding: 6px 14px;
++      text-transform: uppercase;
++    }
++
++    .search-bar {
++      align-items: center;
++      border: 1px solid var(--border);
++      border-radius: 999px;
++      display: flex;
++      gap: 10px;
++      padding: 10px 18px;
++      width: 100%;
++    }
++
++    .search-bar input {
++      border: none;
++      font: inherit;
++      outline: none;
++      width: 100%;
++    }
++
++    footer {
++      color: var(--muted);
+       font-size: 14px;
++      padding: 32px 20px 48px;
++      text-align: center;
+     }
+ 
++    @media (max-width: 768px) {
++      nav ul {
++        gap: 12px;
++        justify-content: center;
++        width: 100%;
++      }
++
++      nav button {
++        font-size: 15px;
++      }
++
++      section header h2 {
++        font-size: 20px;
++      }
++    }
+   </style>
+ </head>
+ <body>
+-
+   <header>
+-    <h1>Chemistry AoPS</h1>
+-    <nav>
+-      <ul>
+-        <li>Forum</li>
+-        <li>Wiki</li>
+-        <li>Practice Problems</li>
+-        <li>Past Tests</li>
+-        <li>Practice Tests</li>
+-      </ul>
+-    </nav>
++    <div class="nav-wrapper">
++      <div class="brand">
++        <div class="logo" aria-hidden="true">Ca</div>
++        <div>
++          <strong style="font-size: 20px; display:block;">Chemistry AoPS</strong>
++          <span class="muted" style="font-size: 14px;">Community-powered chemistry problem solving</span>
++        </div>
++      </div>
++      <nav aria-label="Main navigation">
++        <ul>
++          <li><button type="button" class="active" data-target="forum">Forum</button></li>
++          <li><button type="button" data-target="wiki">Wiki</button></li>
++          <li><button type="button" data-target="resources">Resources</button></li>
++        </ul>
++      </nav>
++    </div>
+   </header>
+ 
+   <main>
+-    <section>
+-      <h2>Forum</h2>
+-      <p>This is where users will discuss chemistry topics, ask questions, and share solutions.</p>
+-    </section>
+-
+-    <section>
+-      <h2>Wiki</h2>
+-      <p>A structured knowledge base for chemistry concepts, reactions, and problem-solving strategies.</p>
+-    </section>
+-
+-    <section>
+-      <h2>Practice Problems</h2>
+-      <p>Collection of graded problems for students to test their understanding and prepare for exams.</p>
+-    </section>
+-
+-    <section>
+-      <h2>Past Tests</h2>
+-      <p>Archive of previous chemistry exams for reference and practice.</p>
+-    </section>
+-
+-    <section>
+-      <h2>Practice Tests</h2>
+-      <p>Interactive or downloadable tests for students to simulate exam conditions.</p>
+-    </section>
++    <div id="forum" class="grid section-panel" role="region" aria-label="Forum">
++      <section>
++        <header>
++          <h2>Community Forum</h2>
++          <p>Pose questions, share Olympiad strategies, and collaborate on chemistry challenges.</p>
++        </header>
++        <div class="content">
++          <form id="new-thread-form" aria-label="Create a new forum thread">
++            <div class="pill">New Discussion</div>
++            <div>
++              <label for="thread-title">Thread title</label>
++              <input id="thread-title" name="title" type="text" placeholder="e.g. Strategies for multi-step titration problems" required>
++            </div>
++            <div>
++              <label for="thread-author">Display name</label>
++              <input id="thread-author" name="author" type="text" placeholder="Your name or nickname" required>
++            </div>
++            <div>
++              <label for="thread-category">Category</label>
++              <select id="thread-category" name="category" required>
++                <option value="General">General</option>
++                <option value="Olympiad">Olympiad</option>
++                <option value="Analytical">Analytical</option>
++                <option value="Organic">Organic</option>
++                <option value="Physical">Physical</option>
++                <option value="Inorganic">Inorganic</option>
++              </select>
++            </div>
++            <div>
++              <label for="thread-content">Discussion starter</label>
++              <textarea id="thread-content" name="content" placeholder="Share your question or idea with helpful context." required></textarea>
++            </div>
++            <button type="submit" class="primary">Publish thread</button>
++          </form>
++        </div>
++      </section>
++
++      <section>
++        <header>
++          <h2>Latest threads</h2>
++          <p>Browse the newest posts from the Chemistry AoPS community.</p>
++        </header>
++        <div class="content">
++          <div class="forum-filters" aria-label="Forum filters">
++            <span class="badge" data-filter="All">All topics</span>
++            <span class="badge" data-filter="General">General</span>
++            <span class="badge" data-filter="Olympiad">Olympiad</span>
++            <span class="badge" data-filter="Analytical">Analytical</span>
++            <span class="badge" data-filter="Organic">Organic</span>
++            <span class="badge" data-filter="Physical">Physical</span>
++            <span class="badge" data-filter="Inorganic">Inorganic</span>
++          </div>
++          <div id="thread-list" class="thread-list" role="list" aria-live="polite"></div>
++        </div>
++      </section>
++    </div>
++
++    <div id="wiki" class="grid section-panel" role="region" aria-label="Wiki" hidden>
++      <section>
++        <header>
++          <h2>Chemistry Wiki</h2>
++          <p>Curated knowledge base of key concepts, reactions, and problem-solving techniques.</p>
++        </header>
++        <div class="content">
++          <form id="new-wiki-form" aria-label="Create a new wiki article">
++            <div class="pill">Contribute</div>
++            <div>
++              <label for="wiki-title">Article title</label>
++              <input id="wiki-title" name="title" type="text" placeholder="e.g. Buffer capacity derivation" required>
++            </div>
++            <div>
++              <label for="wiki-summary">Summary</label>
++              <textarea id="wiki-summary" name="summary" placeholder="Provide a concise explanation or derivation." required></textarea>
++            </div>
++            <div>
++              <label for="wiki-tags">Tags (comma separated)</label>
++              <input id="wiki-tags" name="tags" type="text" placeholder="equilibrium, acid-base, olympiad">
++            </div>
++            <button type="submit" class="primary">Publish article</button>
++          </form>
++        </div>
++      </section>
++
++      <section>
++        <header>
++          <h2>Explore the wiki</h2>
++          <p>Search the living encyclopedia of chemistry problem solving.</p>
++        </header>
++        <div class="content">
++          <div class="search-bar" role="search">
++            <span aria-hidden="true">🔍</span>
++            <input id="wiki-search" type="text" placeholder="Search by title, summary, or tag">
++          </div>
++          <div id="wiki-list" class="wiki-list" role="list" aria-live="polite" style="margin-top: 20px;"></div>
++        </div>
++      </section>
++    </div>
++
++    <div id="resources" class="grid section-panel" role="region" aria-label="Resources" hidden>
++      <section>
++        <header>
++          <h2>Practice Hub</h2>
++          <p>Curated resources to strengthen competition-ready chemistry skills.</p>
++        </header>
++        <div class="content stack">
++          <div class="card">
++            <h3>Problem Sets</h3>
++            <p class="muted">Weekly themed problem sets featuring Olympiad-style questions with fully worked solutions.</p>
++          </div>
++          <div class="card">
++            <h3>Past Papers</h3>
++            <p class="muted">Access archives from major competitions such as IChO, USNCO, and regional contests.</p>
++          </div>
++          <div class="card">
++            <h3>Mock Exams</h3>
++            <p class="muted">Timed practice exams designed to mimic the pressure and structure of real contests.</p>
++          </div>
++          <div class="card">
++            <h3>Concept Drills</h3>
++            <p class="muted">Interactive drills that reinforce high-yield topics including kinetics, thermodynamics, and spectroscopy.</p>
++          </div>
++        </div>
++      </section>
++    </div>
+   </main>
+ 
+   <footer>
+-    &copy; 2025 Chemistry AoPS • All rights reserved
++    &copy; <span id="year"></span> Chemistry AoPS. Built by and for the chemistry community.
+   </footer>
+ 
++  <template id="thread-template">
++    <article class="thread" role="listitem">
++      <header>
++        <div>
++          <h3></h3>
++          <p class="muted"></p>
++        </div>
++        <span class="badge"></span>
++      </header>
++      <p class="thread-body" style="margin-top: 12px;"></p>
++      <div class="forum-replies" hidden></div>
++      <form class="reply-form" style="margin-top: 18px;">
++        <label style="color: var(--muted); font-size: 14px;" for="reply">Add a reply</label>
++        <input type="text" name="author" placeholder="Your name" required style="margin-top: 8px;">
++        <textarea name="content" placeholder="Contribute to the discussion" required style="margin-top: 8px;"></textarea>
++        <button type="submit" class="primary" style="margin-top: 8px;">Post reply</button>
++      </form>
++    </article>
++  </template>
++
++  <template id="reply-template">
++    <div class="reply">
++      <strong></strong>
++      <p style="margin-top: 6px;"></p>
++    </div>
++  </template>
++
++  <template id="wiki-template">
++    <article class="wiki-entry" role="listitem">
++      <header>
++        <h3></h3>
++        <span class="badge"></span>
++      </header>
++      <p class="muted"></p>
++    </article>
++  </template>
++
++  <template id="empty-template">
++    <div class="empty-state">
++      <span style="font-size: 40px;" aria-hidden="true">🧪</span>
++      <p>No entries yet. Be the first to contribute!</p>
++    </div>
++  </template>
++
++  <script>
++    const storageKeys = {
++      threads: 'chem-aops-threads',
++      wiki: 'chem-aops-wiki'
++    };
++
++    const demoThreads = [
++      {
++        title: 'Kinetic vs thermodynamic control in pericyclic reactions',
++        author: 'SpectraSeeker',
++        category: 'Organic',
++        content: 'How do you decide which product dominates in olympiad problems featuring competing pericyclic pathways? Looking for a structured approach.',
++        replies: [
++          { author: 'ReactionMechanic', content: 'Check activation energies and relative stability. IChO 2019 task 2 has a great example—free energy diagram is key.' },
++          { author: 'ChemCoach', content: 'Add Hammond postulate reasoning. If temperature is low, favor kinetic product. Summarize assumptions explicitly in your write-up.' }
++        ]
++      },
++      {
++        title: 'Ionic strength adjustments in potentiometric titrations',
++        author: 'LabNotebook',
++        category: 'Analytical',
++        content: 'For USNCO lab practical prep: any tips on when to include ionic strength adjusters? How do they impact the calculations?'
++      }
++    ];
++
++    const demoWiki = [
++      {
++        title: 'Buffer capacity derivation',
++        summary: 'Derives the expression \u03b2 = 2.303 C_total (Ka [H3O+] / (Ka + [H3O+])^2) and discusses olympiad-grade approximations for diprotic systems.',
++        tags: ['acid-base', 'equilibrium', 'analytical']
++      },
++      {
++        title: 'Qualitative analysis flowchart',
++        summary: 'Step-by-step procedure for identifying cations in classic group qualitative analysis including confirmatory tests.',
++        tags: ['inorganic', 'analysis']
++      }
++    ];
++
++    const navButtons = document.querySelectorAll('nav button');
++    const panels = document.querySelectorAll('.section-panel');
++    const yearEl = document.getElementById('year');
++    yearEl.textContent = new Date().getFullYear();
++
++    navButtons.forEach(button => {
++      button.addEventListener('click', () => {
++        navButtons.forEach(btn => btn.classList.toggle('active', btn === button));
++        panels.forEach(panel => {
++          panel.hidden = panel.id !== button.dataset.target;
++        });
++        panelFocus(button.dataset.target);
++      });
++    });
++
++    function panelFocus(id) {
++      const panel = document.getElementById(id);
++      if (!panel) return;
++      panel.setAttribute('tabindex', '-1');
++      panel.focus({ preventScroll: false });
++      panel.addEventListener('blur', () => panel.removeAttribute('tabindex'), { once: true });
++    }
++
++    function loadState(key, fallback) {
++      try {
++        const stored = localStorage.getItem(key);
++        if (!stored) {
++          return fallback;
++        }
++        const parsed = JSON.parse(stored);
++        if (!Array.isArray(parsed)) {
++          return fallback;
++        }
++        return parsed;
++      } catch (error) {
++        console.warn('Failed to parse state for', key, error);
++        return fallback;
++      }
++    }
++
++    function saveState(key, data) {
++      try {
++        localStorage.setItem(key, JSON.stringify(data));
++      } catch (error) {
++        console.warn('Failed to save state for', key, error);
++      }
++    }
++
++    // Forum logic
++    const threadTemplate = document.getElementById('thread-template');
++    const replyTemplate = document.getElementById('reply-template');
++    const emptyTemplate = document.getElementById('empty-template');
++    const threadListEl = document.getElementById('thread-list');
++    const newThreadForm = document.getElementById('new-thread-form');
++    const filterBadges = document.querySelectorAll('.forum-filters .badge');
++
++    let threads = loadState(storageKeys.threads, demoThreads);
++    let activeFilter = 'All';
++
++    function renderThreads() {
++      threadListEl.innerHTML = '';
++      const filtered = activeFilter === 'All'
++        ? threads
++        : threads.filter(thread => thread.category === activeFilter);
++
++      if (!filtered.length) {
++        threadListEl.appendChild(emptyTemplate.content.cloneNode(true));
++        return;
++      }
++
++      filtered.forEach((thread, index) => {
++        const threadNode = threadTemplate.content.cloneNode(true);
++        const article = threadNode.querySelector('article');
++        article.dataset.index = threads.indexOf(thread);
++        article.querySelector('h3').textContent = thread.title;
++        article.querySelector('.muted').textContent = `Started by ${thread.author}`;
++        article.querySelector('.badge').textContent = thread.category;
++        article.querySelector('.thread-body').textContent = thread.content;
++
++        const repliesContainer = article.querySelector('.forum-replies');
++        if (thread.replies && thread.replies.length) {
++          repliesContainer.hidden = false;
++          thread.replies.forEach(reply => {
++            const replyNode = replyTemplate.content.cloneNode(true);
++            replyNode.querySelector('strong').textContent = reply.author;
++            replyNode.querySelector('p').textContent = reply.content;
++            repliesContainer.appendChild(replyNode);
++          });
++        }
++
++        const replyForm = article.querySelector('.reply-form');
++        replyForm.addEventListener('submit', event => {
++          event.preventDefault();
++          const data = new FormData(replyForm);
++          const author = data.get('author').trim();
++          const content = data.get('content').trim();
++          if (!author || !content) {
++            return;
++          }
++          const threadIndex = Number(article.dataset.index);
++          const newReply = { author, content };
++          threads[threadIndex].replies = threads[threadIndex].replies || [];
++          threads[threadIndex].replies.push(newReply);
++          saveState(storageKeys.threads, threads);
++          replyForm.reset();
++          renderThreads();
++        });
++
++        threadListEl.appendChild(threadNode);
++      });
++    }
++
++    newThreadForm.addEventListener('submit', event => {
++      event.preventDefault();
++      const data = new FormData(newThreadForm);
++      const newThread = {
++        title: data.get('title').trim(),
++        author: data.get('author').trim(),
++        category: data.get('category'),
++        content: data.get('content').trim(),
++        replies: []
++      };
++      if (!newThread.title || !newThread.author || !newThread.content) {
++        return;
++      }
++      threads = [newThread, ...threads];
++      saveState(storageKeys.threads, threads);
++      newThreadForm.reset();
++      renderThreads();
++    });
++
++    filterBadges.forEach(badge => {
++      badge.addEventListener('click', () => {
++        activeFilter = badge.dataset.filter;
++        filterBadges.forEach(b => {
++          b.style.background = b === badge ? 'rgba(30, 58, 138, 0.2)' : 'rgba(30, 58, 138, 0.1)';
++        });
++        renderThreads();
++      });
++    });
++
++    // Wiki logic
++    const wikiTemplate = document.getElementById('wiki-template');
++    const wikiListEl = document.getElementById('wiki-list');
++    const newWikiForm = document.getElementById('new-wiki-form');
++    const wikiSearch = document.getElementById('wiki-search');
++
++    let wikiEntries = loadState(storageKeys.wiki, demoWiki);
++    let wikiQuery = '';
++
++    function renderWiki() {
++      wikiListEl.innerHTML = '';
++      const normalizedQuery = wikiQuery.trim().toLowerCase();
++      const filtered = wikiEntries.filter(entry => {
++        if (!normalizedQuery) return true;
++        const haystack = [
++          entry.title,
++          entry.summary,
++          ...(entry.tags || [])
++        ].join(' ').toLowerCase();
++        return haystack.includes(normalizedQuery);
++      });
++
++      if (!filtered.length) {
++        const emptyNode = emptyTemplate.content.cloneNode(true);
++        emptyNode.querySelector('p').textContent = 'No wiki articles yet. Try a different search or start one above!';
++        wikiListEl.appendChild(emptyNode);
++        return;
++      }
++
++      filtered.forEach(entry => {
++        const wikiNode = wikiTemplate.content.cloneNode(true);
++        const article = wikiNode.querySelector('article');
++        article.querySelector('h3').textContent = entry.title;
++        article.querySelector('.muted').textContent = entry.summary;
++        const badge = article.querySelector('.badge');
++        badge.textContent = entry.tags && entry.tags.length ? entry.tags.join(' • ') : 'untagged';
++        wikiListEl.appendChild(wikiNode);
++      });
++    }
++
++    newWikiForm.addEventListener('submit', event => {
++      event.preventDefault();
++      const data = new FormData(newWikiForm);
++      const tagsRaw = data.get('tags');
++      const entry = {
++        title: data.get('title').trim(),
++        summary: data.get('summary').trim(),
++        tags: tagsRaw ? tagsRaw.split(',').map(tag => tag.trim()).filter(Boolean) : []
++      };
++      if (!entry.title || !entry.summary) {
++        return;
++      }
++      wikiEntries = [entry, ...wikiEntries];
++      saveState(storageKeys.wiki, wikiEntries);
++      newWikiForm.reset();
++      renderWiki();
++    });
++
++    wikiSearch.addEventListener('input', event => {
++      wikiQuery = event.target.value;
++      renderWiki();
++    });
++
++    // Initial render
++    renderThreads();
++    renderWiki();
++  </script>
+ </body>
+ </html>
