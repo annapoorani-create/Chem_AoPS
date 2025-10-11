@@ -1,3 +1,4 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
 diff --git a/main_thing.html b/main_thing.html
 index fa1ab3b8a0d04cb335a78b800d48bcfb7070d9e8..62f2079eb1cc1baf1b8407bfbc4121424a45035d 100644
 --- a/main_thing.html
@@ -897,4 +898,6 @@ index fa1ab3b8a0d04cb335a78b800d48bcfb7070d9e8..62f2079eb1cc1baf1b8407bfbc412142
 +    renderWiki();
 +  </script>
  </body>
- </html>
+ </html> 
+EOF
+)
